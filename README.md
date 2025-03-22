@@ -6,28 +6,9 @@ A ClojureScript library that provides [Feather Icons](https://github.com/feather
 
 This project downloads SVG files from the Feather Icons repository and converts them to ClojureScript files. Each icon is available as a function that returns a Hiccup data structure, making them easy to use in ClojureScript applications with Reagent, Re-frame, or any other Hiccup-compatible rendering library.
 
-## Setup
-
-1. Make sure you have [Clojure CLI tools](https://clojure.org/guides/getting_started) installed.
-2. Clone this repository:
-   ```
-   git clone https://github.com/yourusername/feathericons-clj.git
-   cd feathericons-clj
-   ```
-3. Run the setup script to download the Feather icons:
-   ```
-   ./setup.sh
-   ```
-   (This will clone the Feather Icons repository and copy the SVG files to the proper location)
-4. Run the conversion process:
-   ```
-   clojure -M:run
-   ```
-   This will process all SVG files and generate the corresponding ClojureScript files under `src/feather/`.
-
 ## Usage
 
-After building, each icon is available as its own namespace. For example:
+Each icon exists in its own namespace with a function `icon`.
 
 ```clojure
 (ns my-app.core
@@ -40,7 +21,7 @@ After building, each icon is available as its own namespace. For example:
    [arrow/icon {:stroke-width 2}]])
 ```
 
-Each icon function accepts a map of properties that will be merged with the default SVG attributes:
+Properties passed in to the icon are merged with the default SVG attributes:
 
 ```clojure
 ;; Default SVG:
@@ -64,9 +45,7 @@ Each icon function accepts a map of properties that will be merged with the defa
 
 ## Development
 
-- `deps.edn` contains all the necessary dependencies.
-- `icons.clj` contains the logic for converting SVG files to ClojureScript.
-- Generated files are placed in `src/feather/`.
+Running `clj -T:build build` will pull the feather repository, then fills out the src/feather directory with the converted files.
 
 ## License
 
