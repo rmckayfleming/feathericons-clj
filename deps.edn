@@ -1,0 +1,11 @@
+{:paths ["src"]
+ :deps {}
+
+ :aliases
+ {:build {:extra-deps {io.github.clojure/tools.build {:mvn/version "RELEASE"}
+                       org.clojure/clojure       {:mvn/version "RELEASE"}
+                       org.clojure/clojurescript {:mvn/version "RELEASE"}
+                       hickory/hickory           {:mvn/version "RELEASE"}
+                       camel-snake-kebab/camel-snake-kebab {:mvn/version "RELEASE"}
+                       clj-commons/fs            {:mvn/version "RELEASE"}}
+          :ns-default build}}}

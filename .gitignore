@@ -1,0 +1,21 @@
+# Feather repository
+/resources/feather
+
+# Clojure/ClojureScript build files
+.cpcache/
+.clj-kondo/
+.lsp/
+target/
+out/
+.nrepl-port
+.shadow-cljs/
+
+# Editor files
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# OS specific
+.DS_Store
+Thumbs.db
