@@ -5,7 +5,8 @@
             [clojure.string :as str]
             [clojure.walk :as walk]
             [camel-snake-kebab.core :as csk]
-            [clojure.java.shell :as shell]))
+            [clojure.java.shell :as shell]
+            [clojure.data.json :as json]))
 
 ;;
 ;; SVG Transformation
@@ -73,11 +74,28 @@
         (shell/sh "git" "clone" repo-url repo-dir)))))
 
 ;;
+;; Version Management
+;;
+
+(defn get-feather-version
+  "Extract version from Feather's package.json file"
+  []
+  (let [package-json-path "resources/feather/package.json"]
+    (if (.exists (io/file package-json-path))
+      (-> package-json-path
+          slurp
+          (json/read-str :key-fn keyword)
+          :version)
+      (do
+        (println "Warning: package.json not found, using default version")
+        "unknown"))))
+
+;;
 ;; Build tasks
 ;;
 
 (def lib 'rmckayfleming/feathericons-clj)
-(def version (format "0.1.%s" (b/git-count-revs nil)))
+(def version (get-feather-version))
 (def class-dir "target/classes")
 (def basis (b/create-basis {:project "deps.edn"}))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
