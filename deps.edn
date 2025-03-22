@@ -7,7 +7,6 @@
                        org.clojure/clojurescript {:mvn/version "RELEASE"}
                        org.clojure/data.json     {:mvn/version "RELEASE"}
                        hickory/hickory           {:mvn/version "RELEASE"}
-                       camel-snake-kebab/camel-snake-kebab {:mvn/version "RELEASE"}
                        clj-commons/fs            {:mvn/version "RELEASE"}}
           :ns-default build}
   :deploy {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}

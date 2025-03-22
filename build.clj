@@ -4,7 +4,6 @@
             [hickory.core :as hickory]
             [clojure.string :as str]
             [clojure.walk :as walk]
-            [camel-snake-kebab.core :as csk]
             [clojure.java.shell :as shell]
             [clojure.data.json :as json]))
 
@@ -46,8 +45,8 @@
   (io/make-parents (str output-dir "/dummy.txt"))
   (doseq [svg-file (.listFiles (io/file input-dir))
           :when (.endsWith (.getName svg-file) ".svg")]
-    (let [icon-name (csk/->kebab-case (str/replace (.getName svg-file) ".svg" ""))
-          file-name (csk/->snake_case icon-name)
+    (let [icon-name (str/replace (.getName svg-file) ".svg" "")
+          file-name (str/replace icon-name "-" "_")
           ns-name (str prefix "." icon-name)
           hiccup (conversion-fn (svg->hiccup svg-file))
           cljc-content (str "(ns " ns-name ")\n\n"
