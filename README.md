@@ -1,10 +1,23 @@
 # feathericons-clj
 
+[![Clojars Project](https://img.shields.io/clojars/v/com.mckayfleming/match-bits.svg)](https://clojars.org/com.mckayfleming/feathericons-clj)
+
 A ClojureScript library that provides [Feather Icons](https://github.com/feathericons/feather) as Hiccup data structures.
 
 ## Overview
 
 This project downloads SVG files from the Feather Icons repository and converts them to ClojureScript files. Each icon is available as a function that returns a Hiccup data structure, making them easy to use in ClojureScript applications with Reagent, Re-frame, or any other Hiccup-compatible rendering library.
+
+## Installation
+For Clojure CLI/deps.edn:
+```clojure
+com.mckayfleming/match-bits {:mvn/version "RELEASE"}
+```
+
+For Leiningen/Boot projects:
+```clojure
+[com.mckayfleming/match-bits "RELEASE"]
+```
 
 ## Usage
 

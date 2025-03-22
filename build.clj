@@ -94,11 +94,11 @@
 ;; Build tasks
 ;;
 
-(def lib 'rmckayfleming/feathericons-clj)
+(def lib 'com.mckayfleming/feathericons-clj)
 (def version (get-feather-version))
 (def class-dir "target/classes")
 (def basis (b/create-basis {:project "deps.edn"}))
-(def jar-file (format "target/%s-%s.jar" (name lib) version))
+(def jar-file "target/deploy.jar")
 
 (defn clean [_]
   (b/delete {:path "resources/feather"})
@@ -130,15 +130,18 @@
   (println "Build completed!"))
 
 (defn jar [_]
-  (clean nil)
-  (build nil)
   (b/copy-dir {:src-dirs ["src"]
                :target-dir class-dir})
   (b/write-pom {:class-dir class-dir
                 :lib lib
                 :version version
                 :basis basis
-                :src-dirs ["src"]})
+                :src-dirs ["src"]
+                :pom-data
+                [[:licenses
+                  [:license
+                   [:name "MIT Licenses"]
+                   [:url "https://spdx.org/licenses/MIT.html"]]]]})
   (b/jar {:class-dir class-dir
           :jar-file jar-file})
   (println "JAR created:" jar-file))
@@ -151,3 +154,4 @@
               :jar-file jar-file
               :class-dir class-dir})
   (println "Installed to local Maven repository"))
+

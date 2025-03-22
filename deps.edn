@@ -9,4 +9,9 @@
                        hickory/hickory           {:mvn/version "RELEASE"}
                        camel-snake-kebab/camel-snake-kebab {:mvn/version "RELEASE"}
                        clj-commons/fs            {:mvn/version "RELEASE"}}
-          :ns-default build}}}
+          :ns-default build}
+  :deploy {:extra-deps {slipset/deps-deploy {:mvn/version "RELEASE"}}
+           :exec-fn deps-deploy.deps-deploy/deploy
+           :exec-args {:installer :remote
+                       :artifact "target/deploy.jar"
+                       :pom-file "target/classes/META-INF/maven/com.mckayfleming/feathericons-clj/pom.xml"}}}}

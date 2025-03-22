@@ -1,6 +1,9 @@
 # Feather repository
 /resources/feather
 
+# Env
+.envrc
+
 # Clojure/ClojureScript build files
 .cpcache/
 .clj-kondo/
